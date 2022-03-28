@@ -6,7 +6,7 @@ parser = argparse.ArgumentParser(description="Ping Scan Network")
 parser.add_argument(
     "-network",
     dest="network",
-    help="Network segment[for example 192.168.1]",
+    help="Network segment [for example 192.168.1]",
     required=True,
 )
 parser.add_argument(
@@ -27,6 +27,5 @@ for ip in range(1, args.machines + 1):
         ).communicate()[0]
 
     output = output.decode("utf-8")
-    print(f"Output: {output}")
     if "Lost 0" in output or "bytes from" in output:
         print(f"The ip address {ip} has responded with an ECHO_REPLY!")
