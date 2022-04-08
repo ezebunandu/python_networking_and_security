@@ -23,9 +23,15 @@ for ip in range(1, args.machines + 1):
         ).communicate()[0]
     elif sys.platform.startswith("win"):
         output = subprocess.Popen(
-            ["ping", ip_address], stdin=PIPE, stdout=PIPE, stderr=PIPE
+            ["ping", ip_address],
+            stdin=PIPE,
+            stdout=PIPE,
+            stderr=PIPE,
         ).communicate()[0]
-
+    elif sys.platform.startswith("darwin"):
+        output = subprocess.Popen(
+            ["ping", "-c 1", ip_address], stdout=subprocess.PIPE
+        ).communicate()[0]
     output = output.decode("utf-8")
     if "Lost 0" in output or "bytes from" in output:
         print(f"The ip address {ip} has responded with an ECHO_REPLY!")
