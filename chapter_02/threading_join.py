@@ -1,9 +1,9 @@
 import threading
 
 
-class thread_message(threading.Thread):
+class MyThread(threading.Thread):
     def __init__(self, message):
-        threading.Thread.__init__(self)
+        super().__init__(self)
         self.message = message
 
     def run(self):
@@ -16,7 +16,7 @@ threads = []
 def test():
     for i in range(10):
         message = f"I am the {i} thread"
-        thread = thread_message(message=message)
+        thread = MyThread(message=message)
         thread.start()
         threads.append(thread)
 
