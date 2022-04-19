@@ -3,7 +3,7 @@ import threading
 
 class MyThread(threading.Thread):
     def __init__(self, message):
-        super().__init__(self)
+        super().__init__()
         self.message = message
 
     def run(self):
