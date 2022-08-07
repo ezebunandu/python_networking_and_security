@@ -7,7 +7,7 @@ socket_io.attach(app)
 
 
 async def index(request):
-    return web.Response(text="Hello world from socketio", content_type="text/html")
+    await web.Response(text="Hello world from socketio", content_type="text/html")
 
 
 @socket_io.on("message")

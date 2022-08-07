@@ -24,9 +24,9 @@ for ip in range(1, args.machines + 1):
     elif sys.platform.startswith("win"):
         output = subprocess.Popen(
             ["ping", ip_address],
-            stdin=PIPE,
-            stdout=PIPE,
-            stderr=PIPE,
+            stdin=subprocess.PIPE,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
         ).communicate()[0]
     elif sys.platform.startswith("darwin"):
         output = subprocess.Popen(
